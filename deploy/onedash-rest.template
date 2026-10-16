@@ -1,0 +1,26 @@
+# FreeRADIUS 3.x module. Generate the credential with scripts/render-radius.mjs.
+rest onedash_rest {
+    connect_uri = "http://127.0.0.1:3100"
+    connect_timeout = 2.0
+    authenticate {
+        uri = "${..connect_uri}/radius/authenticate"
+        method = 'post'
+        body = 'json'
+        timeout = 3.0
+    }
+    accounting {
+        uri = "${..connect_uri}/radius/accounting"
+        method = 'post'
+        body = 'json'
+        timeout = 3.0
+    }
+    pool {
+        start = 0
+        min = 0
+        max = 8
+        spare = 1
+        uses = 0
+        lifetime = 0
+        idle_timeout = 60
+    }
+}

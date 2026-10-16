@@ -1,0 +1,9 @@
+{
+  "name": "onedash-radius",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Node.js voucher API and FreeRADIUS REST adapter for a standalone EAP pilot",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": { "start": "node src/server.mjs", "test": "node --test test/*.test.mjs" }
+}

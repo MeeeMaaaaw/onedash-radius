@@ -1,0 +1,24 @@
+[Unit]
+Description=OneDash RADIUS voucher backend
+After=network.target
+
+[Service]
+Type=simple
+User=onedash-radius
+Group=onedash-radius
+WorkingDirectory=/opt/onedash-radius
+EnvironmentFile=/etc/onedash-radius.env
+Environment=DB_PATH=/var/lib/onedash-radius/vouchers.sqlite
+ExecStart=/usr/bin/node /opt/onedash-radius/src/server.mjs
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/onedash-radius
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
